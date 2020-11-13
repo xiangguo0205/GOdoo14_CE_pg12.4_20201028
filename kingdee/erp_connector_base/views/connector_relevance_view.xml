@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="connector_relevance_tree" model="ir.ui.view">
+            <field name="name">模型对应关系</field>
+            <field name="model">connector.relevance</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="模型对应关系">
+                    <field name="name" optional="show" readonly="1"/>
+                    <field name="relevance_model_id" optional="show" readonly="1"/>
+                    <field name="connector_conf_ids" optional="show" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="connector_relevance_form" model="ir.ui.view">
+            <field name="name">模型对应关系</field>
+            <field name="model">connector.relevance</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="模型信息">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="relevance_model_id"/>
+                            </group>
+                            <group>
+                                <field name="form_id"/>
+                                <field name="connector_conf_ids"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="配置字段">
+                                <field name="relevance_field_ids">
+                                    <tree string="字段" craete="1" editable="bottom">
+                                        <field name="fields_name"/>
+                                        <field name="fields_relevance_name"/>
+                                        <field name="fields_state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- conf Action -->
+        <record id="connector_relevance_action" model="ir.actions.act_window">
+            <field name="name">模型对应关系</field>
+            <field name="res_model">connector.relevance</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Not found info. Let's create one.
+                </p>
+            </field>
+        </record>
+    </data>
+</openerp>
